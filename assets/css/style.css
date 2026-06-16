@@ -17,7 +17,7 @@
   --link-visit: #5a5a7a;
   --accent:     #0f766e;   /* sparing teal accent */
 
-  --serif: Charter, "Iowan Old Style", "Iowan Old Style W01", Georgia, "Times New Roman", ui-serif, serif;
+  --serif: "Iowan Old Style", "Iowan Old Style W01", Georgia, "Times New Roman", ui-serif, serif;
   --sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --mono:  ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 
@@ -170,6 +170,28 @@ section { margin-top: var(--gap); }
   border: 1px solid var(--rule);
   border-radius: var(--radius);
 }
+
+/* before/after reveal on hover (publications) */
+.thumb-hover {
+  position: relative;
+  display: block;
+  width: 160px;
+  height: 120px;
+}
+.thumb-hover .thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.thumb-hover .over {
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+}
+.thumb-hover:hover .over,
+.thumb-hover:focus-within .over {
+  opacity: 1;
+}
 .entry .title { font-family: var(--serif); font-weight: 700; }
 .entry .authors { color: var(--ink-soft); }
 .entry .venue { font-style: italic; color: var(--ink-soft); }
@@ -204,6 +226,8 @@ footer .quote { font-family: var(--serif); font-style: italic; }
   .headshot { width: 120px; height: 120px; }
   .entry { grid-template-columns: 1fr; }
   .entry .thumb { width: 100%; height: auto; aspect-ratio: 4 / 3; }
+  .thumb-hover { width: 100%; height: auto; aspect-ratio: 4 / 3; }
+  .thumb-hover .thumb { position: absolute; aspect-ratio: auto; }
   .name { font-size: 1.8rem; }
 }
 

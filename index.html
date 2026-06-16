@@ -6,19 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Amlaan Bhoi — Machine Learning Researcher</title>
   <meta name="description"
-    content="Amlaan Bhoi is a Senior Machine Learning Researcher at Apple specializing in the evaluation of agentic AI systems — generation quality, tool-use, and responsible AI.">
+    content="Amlaan Bhoi is a Senior Machine Learning Researcher at Apple specializing in the evaluation of agentic AI systems generation quality, agentic behaviors, and safety.">
 
-  <!-- Canonical / Open Graph / Twitter. TODO(Phase 5): replace example.com with the real domain once shared. -->
-  <link rel="canonical" href="https://example.com/">
+  <!-- Canonical / Open Graph / Twitter. Live domain: amlaanbhoi.com -->
+  <link rel="canonical" href="https://amlaanbhoi.com/">
   <meta property="og:type" content="profile">
   <meta property="og:title" content="Amlaan Bhoi — Machine Learning Researcher">
   <meta property="og:description"
-    content="Senior ML Researcher at Apple. Evaluation of agentic AI systems — generation quality, tool-use, and responsible AI.">
-  <meta property="og:url" content="https://example.com/">
-  <meta property="og:image" content="https://example.com/assets/img/profile_pic.jpeg">
+    content="Senior ML Researcher at Apple. Evaluation of agentic AI systems generation quality, agentic behaviors, and safety.">
+  <meta property="og:url" content="https://amlaanbhoi.com/">
+  <meta property="og:image" content="https://amlaanbhoi.com/assets/img/profile_pic.jpeg">
   <meta name="twitter:card" content="summary">
 
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="stylesheet" href="assets/css/style.css">
 
   <!-- Structured identity for crawlers (criterion-neutral credibility). -->
@@ -31,7 +34,7 @@
     "worksFor": { "@type": "Organization", "name": "Apple" },
     "address": { "@type": "PostalAddress", "addressLocality": "Seattle", "addressRegion": "WA", "addressCountry": "US" },
     "alumniOf": { "@type": "CollegeOrUniversity", "name": "University of Illinois at Chicago" },
-    "url": "https://example.com/",
+    "url": "https://amlaanbhoi.com/",
     "sameAs": [
       "https://www.linkedin.com/in/abhoi/",
       "https://scholar.google.com/citations?user=6zkTbN4AAAAJ&hl=en",
@@ -49,7 +52,7 @@
     <header class="hero">
       <div class="intro">
         <h1 class="name">Amlaan Bhoi</h1>
-        <p class="tagline">Evaluation of agentic AI systems — generation quality, tool-use, and responsible AI.</p>
+        <p class="tagline">Evaluation of agentic AI systems generation quality, agentic behaviors, and safety.</p>
         <p class="location">Senior Machine Learning Researcher, Apple · Seattle, WA</p>
         <ul class="linkrow">
           <li><a href="https://www.linkedin.com/in/abhoi/">LinkedIn</a></li>
@@ -71,67 +74,33 @@
       <section id="about" aria-labelledby="about-title">
         <h2 id="about-title" class="section-title">About</h2>
         <p>
-          I am a machine learning researcher working on the <strong>evaluation of agentic AI
-          systems</strong>. When assistants move beyond single-turn answers into long-horizon,
-          multi-step tool-use with error recovery, conventional metrics — correctness, completeness,
-          relevancy — no longer capture quality. My work develops <em>compound</em> measures of agent
-          behavior such as user utility, user-perceived defects, and multi-tool planner evaluation, and
-          a complementary line on <strong>cost- and latency-aware routing</strong> that escalates only
-          the hardest tasks to frontier models while holding generation quality steady.
+          My research addresses a central problem in modern AI: <strong>how to rigorously evaluate
+          agentic systems</strong> once they move beyond single-turn answers into long-horizon,
+          multi-step tool-use with error recovery. In this regime the conventional axes of
+          quality - correctness, completeness, relevancy - are necessary but no longer sufficient.
+          I develop <em>compound</em> measures of agent behavior, including user utility,
+          user-perceived defects, and the evaluation of multi-tool planning, and pursue a
+          complementary line on <strong>cost and latency-aware routing</strong> that reserves
+          frontier-model capacity for the hardest tasks while holding generation quality invariant.
+          Together these threads aim to make agentic systems measurably more trustworthy, efficient,
+          and accountable at production scale.
         </p>
         <p>
-          I am a Senior ML Researcher in Apple's Human-Centered AI organization, where I scale agentic
-          evaluations for Apple Media Products. Previously I was an Applied Scientist at Amazon, building
-          multi-modal fraud detection, large-scale insight generation, and LLM-driven conversational
-          systems across the Returns &amp; Recommerce and Seller Experience Innovation orgs. I hold an
-          M.S. in Computer Science from the
+          I pursue this work as a Senior Machine Learning Researcher in Apple's Human-Centered AI
+          organization, where I scale agentic evaluation for Apple Media Products. Earlier, as an
+          Applied Scientist at Amazon, I built LLM-driven conversational systems, large-scale insight
+          generation, and multi-modal fraud detection across the Returns &amp; Recommerce and Seller
+          Partner Services organizations. I hold an M.S. in Computer Science from the
           <a href="https://www.uic.edu/">University of Illinois at Chicago</a>, where I was advised by
-          <a href="https://www.cs.uic.edu/~zhangx/">Xinhua Zhang</a> and focused on machine learning and
-          computer vision.
+          <a href="https://www.cs.uic.edu/~zhangx/">Xinhua Zhang</a> and worked at the intersection of
+          few-shot machine learning and computer vision.
         </p>
       </section>
 
       <!-- ================= SELECTED CONTRIBUTIONS (criterion #5) ================= -->
       <section id="contributions" aria-labelledby="contrib-title">
         <h2 id="contrib-title" class="section-title">Selected Contributions</h2>
-
-        <ul class="stack">
-          <li>
-            <h3>Evaluation of agentic AI systems</h3>
-            <p class="desc">
-              Methods for measuring multi-turn, multi-tool agents beyond single-turn correctness —
-              capturing user utility, user-perceived defects, and the quality of multi-tool planning and
-              error handling. Applied to scale agentic evaluation for Apple Media Products.
-              <!-- TODO(Amlaan): add a quantified, public-safe impact line if available
-                   (e.g. # of agents/evals covered, quality-regression catch rate). Do NOT invent numbers. -->
-            </p>
-          </li>
-          <li>
-            <h3>Cost- and latency-aware model routing</h3>
-            <p class="desc">
-              Routing strategies that send only the hardest tasks to frontier models, reducing
-              escalation rate and serving cost while maintaining accurate, high-quality generations.
-              <!-- TODO(Amlaan): add measured cost/latency reduction or quality-retention figure if shareable. -->
-            </p>
-          </li>
-          <li>
-            <h3>Applied ML for trust and commerce</h3>
-            <p class="desc">
-              At Amazon, multi-modal fraud detection, large-scale insight generation, and LLMs for
-              conversational returns, plus evaluation of generative-AI seller listings and Seller
-              Assistant.
-            </p>
-          </li>
-          <li>
-            <h3>Computer vision and few-shot learning</h3>
-            <p class="desc">
-              Foundational research on invariant kernels for few-shot learning and widely-read survey
-              work — the
-              <a href="https://arxiv.org/abs/1901.09402">Monocular Depth Estimation survey</a> has been
-              cited 200+ times and remains a reference entry point to the area.
-            </p>
-          </li>
-        </ul>
+        <p class="lead">(Coming Soon)</p>
       </section>
 
       <!-- ================= PUBLICATIONS (criterion #6) ================= -->
@@ -140,11 +109,14 @@
         <p class="lead">
           Citation counts via
           <a href="https://scholar.google.com/citations?user=6zkTbN4AAAAJ&hl=en">Google Scholar</a>
-          (266 total citations; h-index 4).
+          (266 total citations; h-index 4, as of June 2026).
         </p>
 
         <article class="entry">
-          <img class="thumb" src="assets/img/pub-depth.png" alt="Depth-estimation result figure">
+          <span class="thumb-hover">
+            <img class="thumb base" src="assets/img/pub-depth.png" alt="Depth-estimation input image">
+            <img class="thumb over" src="assets/img/pub-depth-after.png" alt="" aria-hidden="true">
+          </span>
           <div>
             <div class="title"><a href="https://arxiv.org/abs/1901.09402">Monocular Depth Estimation: A Survey</a></div>
             <div class="authors"><strong>Amlaan Bhoi</strong></div>
@@ -159,7 +131,10 @@
         </article>
 
         <article class="entry">
-          <img class="thumb" src="assets/img/pub-star.png" alt="Spatio-temporal action recognition figure">
+          <span class="thumb-hover">
+            <img class="thumb base" src="assets/img/pub-star.png" alt="Spatio-temporal action recognition input frame">
+            <img class="thumb over" src="assets/img/pub-star-after.png" alt="" aria-hidden="true">
+          </span>
           <div>
             <div class="title"><a href="https://arxiv.org/abs/1901.09403">Spatio-temporal Action Recognition: A Survey</a></div>
             <div class="authors"><strong>Amlaan Bhoi</strong></div>
@@ -191,7 +166,10 @@
         </article>
 
         <article class="entry">
-          <img class="thumb" src="assets/img/pub-style.png" alt="Style transfer result figure">
+          <span class="thumb-hover">
+            <img class="thumb base" src="assets/img/pub-style.png" alt="Style transfer content image">
+            <img class="thumb over" src="assets/img/pub-style-after.png" alt="" aria-hidden="true">
+          </span>
           <div>
             <div class="title"><a href="https://arxiv.org/abs/1806.00868">A Comprehensive Comparison between Neural Style Transfer and Universal Style Transfer</a></div>
             <div class="authors"><a href="https://github.com/titu1994">Somshubra Majumdar</a>,
@@ -227,8 +205,9 @@
             HackHarvard <span class="when">· 2017</span>
           </li>
           <li>
-            <strong>Best Technical Innovation</strong>, Amity University Convocation
-            <span class="when">· 2017</span>
+            <strong>Best Technical Innovation</strong>, Amity University
+            <span class="when">· 2017</span><br>
+            <span class="selectivity">Selected out of 800 students.</span>
           </li>
         </ul>
       </section>
@@ -238,10 +217,10 @@
         <h2 id="service-title" class="section-title">Professional Service</h2>
         <p class="lead">Peer reviewer for workshops at flagship machine-learning venues (ICML, KDD).</p>
         <ul class="stack">
-          <li>Reviewer, <strong>AIWILD</strong> Workshop, ICML 2025 <span class="when">· 3 reviews</span></li>
-          <li>Reviewer, <strong>AI4MATH</strong> Workshop, ICML 2025 <span class="when">· 3 reviews</span></li>
-          <li>Reviewer, <strong>DL4C</strong> Workshop, ICML 2025 <span class="when">· 2 reviews</span></li>
-          <li>Reviewer, <strong>SET-LLM</strong> Workshop, KDD 2025 <span class="when">· 2 reviews</span></li>
+          <li>Reviewer, <strong><a href="https://agentwild-workshop.github.io/icml2026/">AIWILD</a></strong> Workshop, ICML 2026 <span class="when">· 3 reviews</span></li>
+          <li>Reviewer, <strong><a href="https://ai4math2026.github.io/">AI4MATH</a></strong> Workshop, ICML 2026 <span class="when">· 3 reviews</span></li>
+          <li>Reviewer, <strong><a href="https://dl4c.github.io/">DL4C</a></strong> Workshop, ICML 2026 <span class="when">· 2 reviews</span></li>
+          <li>Reviewer, <strong><a href="https://secure-and-trustworthy-llm.github.io/">SET-LLM</a></strong> Workshop, KDD 2026 <span class="when">· 2 reviews</span></li>
         </ul>
       </section>
 
@@ -282,15 +261,15 @@
           </li>
           <li>
             <h3>Amazon — Applied Scientist</h3>
-            <span class="when">Returns &amp; Recommerce · Seller Experience Innovation</span>
+            <span class="when">Returns &amp; Recommerce → Seller Experience Innovation · Seattle, WA</span>
             <p class="desc">
-              Multi-modal fraud detection, large-scale insight generation, and LLMs for conversational
-              returns; evaluation of generative-AI listings and Seller Assistant.
+              LLMs for conversational returns, large-scale insight generation, and multi-modal fraud
+              detection; evaluation of generative-AI listings and Seller Assistant.
             </p>
           </li>
           <li>
             <h3>CCC Intelligent Solutions — Senior R&amp;D Engineer</h3>
-            <span class="when">Computer Vision</span>
+            <span class="when">Computer Vision Group · Chicago, IL</span>
             <p class="desc">Image classification and segmentation for automotive damage assessment.</p>
           </li>
         </ul>
@@ -319,6 +298,12 @@
         <a href="https://jonbarron.info/">Jon Barron</a>.</p>
     </footer>
   </div>
+
+  <!-- Cloudflare Web Analytics (cookieless, privacy-friendly).
+       TODO: replace REPLACE_WITH_CLOUDFLARE_TOKEN with the token from
+       Cloudflare dashboard → Web Analytics → Add a site. -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+    data-cf-beacon='{"token": "3467553decb44e229ac16378b734c11c"}'></script>
 </body>
 
 </html>
