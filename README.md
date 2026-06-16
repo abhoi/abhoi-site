@@ -8,10 +8,9 @@ See [`PLAN.md`](PLAN.md) for the full information architecture, section → crit
 mapping, design spec, and build phases.
 
 ## Status
-- **Phase 1 (done):** repo scaffold + base HTML/CSS shell, design system, populated hero.
-- **Phase 2 (next):** content migration & reframing (About, Contributions, Publications,
-  Awards, Service, Media, Experience).
-- **Phases 3–5:** metadata/OG/CV assets → QA → deploy.
+- **Phases 1–4 (done):** scaffold, design system, all 8 sections populated with verified
+  data, OG/JSON-LD metadata, placeholder CV, QA pass. Local git history initialized.
+- **Phase 5 (staged, pending domain):** push to GitHub + enable Pages + add `CNAME`.
 
 ## Develop
 Pure static site, no build step:
@@ -19,6 +18,19 @@ Pure static site, no build step:
 python3 -m http.server 8000   # then open http://localhost:8000
 ```
 
-## Deploy
-GitHub Pages, project repo + custom domain (add `CNAME` in Phase 5).
-`.nojekyll` skips Jekyll processing.
+## Before going live (swap placeholders)
+- Replace `assets/cv/Amlaan_Bhoi_CV.pdf` with the real CV.
+- Replace `example.com` in `index.html` (canonical, OG tags, JSON-LD `url`) with the real domain.
+- Optionally add an ORCID link in the hero link row and a 1200×630 `assets/img/og-image.png`.
+- Fill the `TODO(Amlaan)` impact lines in **Selected Contributions** with public-safe metrics.
+
+## Deploy (Phase 5)
+```sh
+# 1. create the GitHub repo, then:
+git remote add origin git@github.com:abhoi/abhoi-academic.git
+git push -u origin main
+# 2. Settings → Pages → deploy from main (root)
+# 3. add the custom domain:
+echo "yourdomain.com" > CNAME && git add CNAME && git commit -m "Add CNAME" && git push
+```
+`.nojekyll` skips Jekyll processing on Pages.
