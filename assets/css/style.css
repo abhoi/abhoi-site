@@ -1,0 +1,213 @@
+/* =========================================================================
+   Amlaan Bhoi — academic site
+   Design system (Phase 1). Refined evolution of the Jon Barron template:
+   single column, serif headings for gravitas, sans body, scholarly palette.
+   ========================================================================= */
+
+/* ---- Design tokens ---------------------------------------------------- */
+:root {
+  --ink:        #232f3e;   /* primary text */
+  --ink-soft:   #4a5562;   /* secondary text */
+  --ink-faint:  #707b88;   /* meta / captions */
+  --bg:         #fafafa;   /* page background */
+  --surface:    #ffffff;   /* cards / thumbnails */
+  --rule:       #e6e8eb;   /* hairline dividers */
+  --link:       #0b5fa5;   /* scholarly blue (replaces Amazon orange) */
+  --link-hover: #08436f;
+  --link-visit: #5a5a7a;
+  --accent:     #0f766e;   /* sparing teal accent */
+
+  --serif: Charter, "Iowan Old Style", "Iowan Old Style W01", Georgia, "Times New Roman", ui-serif, serif;
+  --sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono:  ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  --maxw: 820px;
+  --gap:  2.25rem;        /* vertical rhythm between sections */
+  --radius: 6px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink:       #e7eaee;
+    --ink-soft:  #b6bdc6;
+    --ink-faint: #8b939d;
+    --bg:        #14181d;
+    --surface:   #1c2128;
+    --rule:      #2a313a;
+    --link:      #6fb3ec;
+    --link-hover:#9ccbf4;
+    --link-visit:#b3a6d6;
+    --accent:    #4fd1c5;
+  }
+}
+
+/* ---- Reset / base ----------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+/* ---- Links ------------------------------------------------------------ */
+a { color: var(--link); text-decoration: none; }
+a:hover, a:focus { color: var(--link-hover); text-decoration: underline; }
+a:visited { color: var(--link-visit); }
+
+/* Keyboard focus visibility (a11y) */
+a:focus-visible, .skip-link:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--surface);
+  color: var(--ink);
+  padding: .5rem .9rem;
+  z-index: 10;
+}
+.skip-link:focus { left: .5rem; top: .5rem; }
+
+/* ---- Headings (serif gravitas) --------------------------------------- */
+h1, h2, h3, .name { font-family: var(--serif); color: var(--ink); }
+
+.name {
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+h2.section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  padding-bottom: .35rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+h3 { font-size: 1.05rem; font-weight: 700; margin: 0 0 .15rem; }
+
+p { margin: 0 0 1rem; }
+.lead { color: var(--ink-soft); }
+
+/* ---- Header / hero ---------------------------------------------------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 168px;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.hero .tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  margin: .35rem 0 .6rem;
+}
+
+.hero .location { color: var(--ink-faint); font-size: .92rem; margin: 0 0 .9rem; }
+
+.headshot {
+  width: 168px;
+  height: 168px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
+}
+
+/* link row under the name */
+.linkrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem .85rem;
+  font-size: .93rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.linkrow li { display: inline-flex; align-items: center; }
+.linkrow li + li::before {
+  content: "·";
+  color: var(--ink-faint);
+  margin-right: .85rem;
+}
+
+/* ---- Section rhythm --------------------------------------------------- */
+section { margin-top: var(--gap); }
+
+/* ---- Two-column media rows (publications / projects) ------------------ */
+.entry {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 1.1rem;
+  margin-bottom: 1.6rem;
+}
+.entry .thumb {
+  width: 160px;
+  height: 120px;
+  object-fit: cover;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+.entry .title { font-family: var(--serif); font-weight: 700; }
+.entry .authors { color: var(--ink-soft); }
+.entry .venue { font-style: italic; color: var(--ink-soft); }
+.entry .meta { font-size: .9rem; color: var(--ink-faint); }
+.entry .cites { font-variant-numeric: tabular-nums; }
+.entry .desc { font-size: .94rem; color: var(--ink-soft); margin-top: .35rem; }
+
+/* compact list sections (awards / service / talks / experience) */
+.stack { list-style: none; margin: 0; padding: 0; }
+.stack > li { margin-bottom: .9rem; }
+.stack .when { color: var(--ink-faint); font-size: .9rem; }
+.selectivity { color: var(--accent); font-size: .9rem; }
+
+/* ---- Footer ----------------------------------------------------------- */
+footer {
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  color: var(--ink-faint);
+  font-size: .85rem;
+  text-align: center;
+}
+footer .quote { font-family: var(--serif); font-style: italic; }
+
+/* ---- Responsive ------------------------------------------------------- */
+@media (max-width: 640px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+  .hero .headshot-wrap { order: -1; }
+  .headshot { width: 120px; height: 120px; }
+  .entry { grid-template-columns: 1fr; }
+  .entry .thumb { width: 100%; height: auto; aspect-ratio: 4 / 3; }
+  .name { font-size: 1.8rem; }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
