@@ -227,7 +227,7 @@ footer .quote { font-family: var(--serif); font-style: italic; }
   .entry { grid-template-columns: 1fr; }
   .entry .thumb { width: 100%; height: auto; aspect-ratio: 4 / 3; }
   .thumb-hover { width: 100%; height: auto; aspect-ratio: 4 / 3; }
-  .thumb-hover .thumb { position: absolute; aspect-ratio: auto; }
+  .thumb-hover .thumb { position: absolute; inset: 0; width: 100%; height: 100%; }
   .name { font-size: 1.8rem; }
 }
 
