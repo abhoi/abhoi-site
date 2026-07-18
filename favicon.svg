@@ -1,12 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ab monogram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Amlaan Bhoi">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="g" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="64">
       <stop offset="0" stop-color="#2f97ff"/>
       <stop offset="1" stop-color="#0071e3"/>
     </linearGradient>
   </defs>
   <rect width="64" height="64" rx="14" fill="url(#g)"/>
-  <text x="32" y="44" text-anchor="middle"
-    font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Helvetica, Arial, sans-serif"
-    font-weight="700" font-size="33" letter-spacing="-2" fill="#ffffff">ab</text>
+  <!-- figure = white; laptop carve = tile gradient (blends with background) -->
+  <path fill="#fff" d="M2 55 C2 39 18 33 32 33 C46 33 62 39 62 55 Z"/>
+  <circle fill="#fff" cx="32" cy="20" r="11"/>
+  <rect fill="url(#g)" x="11" y="24.5" width="42" height="23" rx="4"/>
+  <rect fill="#fff"    x="13" y="26.5" width="38" height="19" rx="3"/>
+  <rect fill="url(#g)" x="9"  y="46.5" width="46" height="5.5" rx="2.75"/>
+  <rect fill="#fff"    x="11" y="48"   width="42" height="3"  rx="1.5"/>
 </svg>
