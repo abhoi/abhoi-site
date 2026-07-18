@@ -23,6 +23,12 @@
   --shadow:     0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.06);
   --shadow-lift:0 2px 6px rgba(0,0,0,.06), 0 16px 40px rgba(0,0,0,.10);
 
+  /* Frosted hero card + the faint color wash it blurs */
+  --glass-fill:  color-mix(in srgb, var(--surface) 70%, transparent);
+  --glass-border:rgba(255,255,255,.5);
+  --wash-1:      rgba(0,113,227,.10);     /* blue accent bloom */
+  --wash-2:      rgba(255,94,158,.07);    /* warm counter-bloom */
+
   --sans:  -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
            "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --mono:  ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
@@ -55,6 +61,11 @@
 
     --shadow:     0 1px 2px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.4);
     --shadow-lift:0 2px 6px rgba(0,0,0,.6), 0 16px 40px rgba(0,0,0,.5);
+
+    --glass-fill:  color-mix(in srgb, var(--surface) 62%, transparent);
+    --glass-border:rgba(255,255,255,.12);
+    --wash-1:      rgba(41,151,255,.14);
+    --wash-2:      rgba(190,60,130,.11);
   }
 }
 :root[data-theme="dark"] {
@@ -72,6 +83,11 @@
 
   --shadow:     0 1px 2px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.4);
   --shadow-lift:0 2px 6px rgba(0,0,0,.6), 0 16px 40px rgba(0,0,0,.5);
+
+  --glass-fill:  color-mix(in srgb, var(--surface) 62%, transparent);
+  --glass-border:rgba(255,255,255,.12);
+  --wash-1:      rgba(41,151,255,.14);
+  --wash-2:      rgba(190,60,130,.11);
 }
 
 /* ---- Reset / base ----------------------------------------------------- */
@@ -155,12 +171,41 @@ p { margin: 0 0 1.1rem; }
 .lead { color: var(--ink-soft); }
 
 /* ---- Header / hero ---------------------------------------------------- */
+/* The hero is a single frosted-glass card floating over a faint color wash.
+   .hero-shell holds the wash (.hero-glow) behind the card so the card's
+   backdrop-filter has something to blur. */
+.hero-shell {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+.hero-glow {
+  position: absolute;
+  inset: -12px -6px;
+  z-index: 0;
+  border-radius: 32px;
+  pointer-events: none;
+  background:
+    radial-gradient(62% 120% at 12% 0%, var(--wash-1), transparent 60%),
+    radial-gradient(58% 120% at 100% 100%, var(--wash-2), transparent 60%);
+  filter: blur(22px);
+}
+
 .hero {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1fr 160px;
   gap: 2.25rem;
   align-items: center;
-  margin-bottom: 1rem;
+  padding: 2rem 2.25rem;
+  border-radius: 22px;
+  background: var(--surface);                 /* fallback if color-mix unsupported */
+  background: var(--glass-fill);
+  border: 1px solid var(--rule);              /* fallback */
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-lift);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  backdrop-filter: blur(20px) saturate(150%);
 }
 
 .hero .tagline {
@@ -621,6 +666,8 @@ html.js .reveal.in { opacity: 1; transform: none; }
     grid-template-columns: 1fr;
     gap: 1.25rem;
     text-align: left;
+    padding: 1.5rem 1.4rem;
+    border-radius: 20px;
   }
   .hero .headshot-wrap { order: -1; }
   .headshot { width: 116px; height: 116px; }
