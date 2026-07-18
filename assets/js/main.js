@@ -15,6 +15,71 @@
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var finePointer = window.matchMedia("(pointer: fine)").matches;
 
+  /* ---- theme toggle (light / dark) -------------------------------------- */
+  // Default follows the OS (no data-theme attribute → CSS media query decides).
+  // A click sets an explicit choice, persisted in localStorage. The head script
+  // has already applied any saved choice before paint.
+  (function () {
+    var btn = document.getElementById("theme-toggle");
+    if (!btn) return;
+    var systemDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+    function stored() {
+      try { return localStorage.getItem("theme"); } catch (e) { return null; }
+    }
+    // What the page is actually showing right now.
+    function effective() {
+      var choice = root.getAttribute("data-theme");
+      if (choice === "light" || choice === "dark") return choice;
+      return systemDark.matches ? "dark" : "light";
+    }
+    // Reflect the current state on the switch (checked = dark).
+    function syncLabel() {
+      btn.setAttribute("aria-checked", effective() === "dark" ? "true" : "false");
+    }
+    syncLabel();
+
+    btn.addEventListener("click", function () {
+      var next = effective() === "dark" ? "light" : "dark";
+      sweep(next);                                  // paint the new color outward
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+      syncLabel();
+    });
+
+    // Expand a disc of the incoming page color from the button across the
+    // viewport, fading as it grows — a visual cue that the page is recoloring.
+    function sweep(nextTheme) {
+      if (reduce) return;
+      var r = btn.getBoundingClientRect();
+      var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      var vw = window.innerWidth, vh = window.innerHeight;
+      var far = Math.sqrt(Math.pow(Math.max(cx, vw - cx), 2) +
+                          Math.pow(Math.max(cy, vh - cy), 2));
+      var disc = document.createElement("span");
+      disc.className = "theme-sweep";
+      disc.style.left = (cx - far) + "px";
+      disc.style.top = (cy - far) + "px";
+      disc.style.width = disc.style.height = (2 * far) + "px";
+      disc.style.background = nextTheme === "dark" ? "#000000" : "#fbfbfd";
+      disc.style.opacity = "0.6";
+      disc.style.transform = "scale(0)";
+      disc.style.transition = "transform .5s cubic-bezier(.4,0,.2,1), opacity .5s ease";
+      document.body.appendChild(disc);
+      requestAnimationFrame(function () {
+        disc.style.transform = "scale(1)";
+        disc.style.opacity = "0";
+      });
+      setTimeout(function () { disc.remove(); }, 560);
+    }
+
+    // While following the system (no explicit choice), track OS changes so the
+    // icon/label stay correct if the user flips their appearance setting.
+    var onSystemChange = function () { if (!stored()) syncLabel(); };
+    if (systemDark.addEventListener) systemDark.addEventListener("change", onSystemChange);
+    else if (systemDark.addListener) systemDark.addListener(onSystemChange);
+  })();
+
   /* ---- tiny toast -------------------------------------------------------- */
   var toastEl;
   function toast(msg) {

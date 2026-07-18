@@ -33,8 +33,14 @@
   --radius-sm: 6px;
 }
 
+/* Dark palette. Applied in two cases:
+   1. the visitor's OS prefers dark AND they haven't made an explicit choice
+      (`:root:not([data-theme])`), and
+   2. the visitor has explicitly chosen dark (`:root[data-theme="dark"]`).
+   An explicit light choice (`data-theme="light"`) falls back to the :root
+   light tokens above. Keeping the two selectors in sync = one palette. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme]) {
     --ink:       #f5f5f7;
     --ink-soft:  #c7c7cc;
     --ink-faint: #86868b;
@@ -50,6 +56,22 @@
     --shadow:     0 1px 2px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.4);
     --shadow-lift:0 2px 6px rgba(0,0,0,.6), 0 16px 40px rgba(0,0,0,.5);
   }
+}
+:root[data-theme="dark"] {
+  --ink:       #f5f5f7;
+  --ink-soft:  #c7c7cc;
+  --ink-faint: #86868b;
+  --bg:        #000000;
+  --surface:   #1c1c1e;
+  --surface-2: #161618;
+  --rule:      #2a2a2d;
+  --link:      #2997ff;
+  --link-hover:#5ab0ff;
+  --link-visit:#2997ff;
+  --accent:    #2997ff;
+
+  --shadow:     0 1px 2px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.4);
+  --shadow-lift:0 2px 6px rgba(0,0,0,.6), 0 16px 40px rgba(0,0,0,.5);
 }
 
 /* ---- Reset / base ----------------------------------------------------- */
@@ -189,6 +211,93 @@ p { margin: 0 0 1.1rem; }
 }
 .linkrow a { color: var(--link); }
 .linkrow a:hover, .linkrow a:focus { text-decoration: underline; }
+
+/* ---- Theme toggle ----------------------------------------------------- */
+/* Lives inline at the end of the links row. Only shown when JS is present (it
+   needs JS to work). An iOS-style pill switch: a sliding knob carries the
+   current-state glyph (sun in light, moon in dark) and slides left→right as
+   the theme changes. Apple-style translucent hairline; on click main.js sweeps
+   the incoming page color out from the control. */
+.theme-li { display: none; }               /* hidden until JS enables it */
+html.js .theme-li { display: inline-flex; align-items: center; }
+
+.theme-toggle {
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 46px;
+  height: 26px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid var(--rule);                                 /* fallback */
+  border: 1px solid color-mix(in srgb, var(--ink) 11%, transparent);
+  background: var(--surface-2);                                  /* fallback */
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
+  cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, box-shadow .15s ease;
+}
+.theme-toggle:hover {
+  border-color: color-mix(in srgb, var(--ink) 20%, transparent);
+}
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* the sliding knob — slides via `left` so `transform` is free for hover/press */
+.theme-toggle .knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink-soft);
+  box-shadow: 0 1px 2px rgba(0,0,0,.28);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: left .28s cubic-bezier(.34,1.4,.5,1),
+              transform .18s ease, color .15s ease, background-color .2s ease;
+}
+.theme-toggle:hover .knob { color: var(--ink); transform: scale(1.06); }
+.theme-toggle:active .knob { transform: scale(.9); }
+
+.theme-toggle svg { width: 12px; height: 12px; display: block; }
+
+/* Current state drives both the visible glyph and the knob's side.
+   Light → sun on the left; dark → moon on the right. Covers explicit choices
+   and the follow-the-system default. */
+.theme-toggle .icon-moon { display: none; }
+.theme-toggle .icon-sun  { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .theme-toggle .icon-sun  { display: none; }
+  :root:not([data-theme]) .theme-toggle .icon-moon { display: block; }
+  :root:not([data-theme]) .theme-toggle .knob      { left: 22px; }
+}
+:root[data-theme="dark"] .theme-toggle .icon-sun  { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+:root[data-theme="dark"] .theme-toggle .knob      { left: 22px; }
+
+/* The expanding disc of the incoming page color, launched from the button. */
+.theme-sweep {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 40;
+  will-change: transform, opacity;
+}
+
+/* Ease color changes across the page when the theme flips. */
+body,
+.stats,
+.entry .thumb,
+.cite-bib {
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease;
+}
 
 /* ---- Section rhythm --------------------------------------------------- */
 section { margin-top: var(--gap); }
