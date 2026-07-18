@@ -107,15 +107,22 @@
         <h2 id="pubs-title" class="section-title">Preprints &amp; Technical Reports</h2>
         <p class="lead">
           Citation counts via
-          <a href="https://scholar.google.com/citations?user=6zkTbN4AAAAJ&hl=en">Google Scholar</a>
-          (268 total citations; h-index 4, as of July 2026).
+          <a href="https://scholar.google.com/citations?user=6zkTbN4AAAAJ&hl=en">Google Scholar</a>, as of July 2026.
         </p>
+        <div class="stats">
+          <div class="stat"><div class="v countup" data-to="268">268</div><div class="k">total citations</div></div>
+          <div class="stat"><div class="v countup" data-to="4">4</div><div class="k">h-index</div></div>
+        </div>
 
         <article class="entry">
-          <span class="thumb-hover">
-            <img class="thumb base" src="assets/img/pub-depth.png" alt="Depth-estimation input image">
-            <img class="thumb over" src="assets/img/pub-depth-after.png" alt="" aria-hidden="true">
-          </span>
+          <div class="compare" data-compare tabindex="0" role="slider"
+            aria-label="Drag to compare input image and predicted depth" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+            <img class="cmp-img cmp-after" src="assets/img/pub-depth-after.png" alt="Predicted depth map" draggable="false">
+            <img class="cmp-img cmp-before" src="assets/img/pub-depth.png" alt="Depth-estimation input image" draggable="false">
+            <span class="cmp-cap cmp-cap-l">Input</span>
+            <span class="cmp-cap cmp-cap-r">Depth</span>
+            <span class="cmp-divider" aria-hidden="true"><span class="cmp-knob">⇔</span></span>
+          </div>
           <div>
             <div class="title"><a href="https://arxiv.org/abs/1901.09402">Monocular Depth Estimation: A Survey</a></div>
             <div class="authors"><strong>Amlaan Bhoi</strong></div>
@@ -127,14 +134,30 @@
               A survey of supervised, weakly-supervised, and unsupervised approaches to predicting dense
               depth from a single RGB image, comparing methods and outlining open directions.
             </p>
+            <div class="cite" data-cite>
+              <button class="cite-btn" type="button" aria-expanded="false">Cite</button>
+              <div class="cite-box" hidden>
+<pre class="cite-bib">@article{bhoi2019monocular,
+  title   = {Monocular Depth Estimation: A Survey},
+  author  = {Bhoi, Amlaan},
+  journal = {arXiv preprint arXiv:1901.09402},
+  year    = {2019}
+}</pre>
+                <button class="cite-copy" type="button">Copy BibTeX</button>
+              </div>
+            </div>
           </div>
         </article>
 
         <article class="entry">
-          <span class="thumb-hover">
-            <img class="thumb base" src="assets/img/pub-star.png" alt="Spatio-temporal action recognition input frame">
-            <img class="thumb over" src="assets/img/pub-star-after.png" alt="" aria-hidden="true">
-          </span>
+          <div class="compare" data-compare tabindex="0" role="slider"
+            aria-label="Drag to compare video frame and recognized action" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+            <img class="cmp-img cmp-after" src="assets/img/pub-star-after.png" alt="Recognized spatio-temporal action" draggable="false">
+            <img class="cmp-img cmp-before" src="assets/img/pub-star.png" alt="Spatio-temporal action recognition input frame" draggable="false">
+            <span class="cmp-cap cmp-cap-l">Frame</span>
+            <span class="cmp-cap cmp-cap-r">Action</span>
+            <span class="cmp-divider" aria-hidden="true"><span class="cmp-knob">⇔</span></span>
+          </div>
           <div>
             <div class="title"><a href="https://arxiv.org/abs/1901.09403">Spatio-temporal Action Recognition: A
                 Survey</a></div>
@@ -147,6 +170,18 @@
               A survey of action localization in video — determining what action is performed, and when
               and where — across algorithms, datasets, and the most promising directions.
             </p>
+            <div class="cite" data-cite>
+              <button class="cite-btn" type="button" aria-expanded="false">Cite</button>
+              <div class="cite-box" hidden>
+<pre class="cite-bib">@article{bhoi2019spatiotemporal,
+  title   = {Spatio-temporal Action Recognition: A Survey},
+  author  = {Bhoi, Amlaan},
+  journal = {arXiv preprint arXiv:1901.09403},
+  year    = {2019}
+}</pre>
+                <button class="cite-copy" type="button">Copy BibTeX</button>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -167,14 +202,30 @@
               An exploration of pre-processing, features, and memory-network methods for classifying
               sentiment toward a specific aspect within a sentence.
             </p>
+            <div class="cite" data-cite>
+              <button class="cite-btn" type="button" aria-expanded="false">Cite</button>
+              <div class="cite-box" hidden>
+<pre class="cite-bib">@article{bhoi2018various,
+  title   = {Various Approaches to Aspect-based Sentiment Analysis},
+  author  = {Bhoi, Amlaan and Joshi, Sandeep},
+  journal = {arXiv preprint arXiv:1805.01984},
+  year    = {2018}
+}</pre>
+                <button class="cite-copy" type="button">Copy BibTeX</button>
+              </div>
+            </div>
           </div>
         </article>
 
         <article class="entry">
-          <span class="thumb-hover">
-            <img class="thumb base" src="assets/img/pub-style.png" alt="Style transfer content image">
-            <img class="thumb over" src="assets/img/pub-style-after.png" alt="" aria-hidden="true">
-          </span>
+          <div class="compare" data-compare tabindex="0" role="slider"
+            aria-label="Drag to compare content image and stylized result" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+            <img class="cmp-img cmp-after" src="assets/img/pub-style-after.png" alt="Stylized output image" draggable="false">
+            <img class="cmp-img cmp-before" src="assets/img/pub-style.png" alt="Style transfer content image" draggable="false">
+            <span class="cmp-cap cmp-cap-l">Content</span>
+            <span class="cmp-cap cmp-cap-r">Stylized</span>
+            <span class="cmp-divider" aria-hidden="true"><span class="cmp-knob">⇔</span></span>
+          </div>
           <div>
             <div class="title"><a href="https://arxiv.org/abs/1806.00868">A Comprehensive Comparison between Neural
                 Style Transfer and Universal Style Transfer</a></div>
@@ -191,8 +242,53 @@
               A comparison of neural and universal style-transfer approaches, focused on real-time
               transfer and generalization to unseen styles.
             </p>
+            <div class="cite" data-cite>
+              <button class="cite-btn" type="button" aria-expanded="false">Cite</button>
+              <div class="cite-box" hidden>
+<pre class="cite-bib">@article{majumdar2018comprehensive,
+  title   = {A Comprehensive Comparison between Neural Style Transfer
+             and Universal Style Transfer},
+  author  = {Majumdar, Somshubra and Bhoi, Amlaan and Jagadeesan, Ganesh},
+  journal = {arXiv preprint arXiv:1806.00868},
+  year    = {2018}
+}</pre>
+                <button class="cite-copy" type="button">Copy BibTeX</button>
+              </div>
+            </div>
           </div>
         </article>
+      </section>
+
+      <!-- ================= PROFESSIONAL SERVICE (criterion #4) ================= -->
+      <section id="service" aria-labelledby="service-title">
+        <h2 id="service-title" class="section-title">Professional Service</h2>
+        <p class="lead">Peer reviewer across ICML, KDD &amp; COLM 2026 workshops.</p>
+        <div class="stats">
+          <div class="stat"><div class="v countup" data-to="12">12</div><div class="k">peer reviews</div></div>
+          <div class="stat"><div class="v countup" data-to="5">5</div><div class="k">workshops</div></div>
+        </div>
+        <ul class="grouped">
+          <li>
+            <span class="grp">ICML 2026</span>
+            <span class="grp-items">
+              <a href="https://agentwild-workshop.github.io/icml2026/">AIWILD</a> <span class="n">(3)</span> ·
+              <a href="https://ai4math2026.github.io/">AI4MATH</a> <span class="n">(3)</span> ·
+              <a href="https://dl4c.github.io/">DL4C</a> <span class="n">(2)</span>
+            </span>
+          </li>
+          <li>
+            <span class="grp">KDD 2026</span>
+            <span class="grp-items">
+              <a href="https://secure-and-trustworthy-llm.github.io/">SET-LLM</a> <span class="n">(2)</span>
+            </span>
+          </li>
+          <li>
+            <span class="grp">COLM 2026</span>
+            <span class="grp-items">
+              <a href="https://science-ai-2026.github.io/">Sci-FM</a> <span class="n">(2)</span>
+            </span>
+          </li>
+        </ul>
       </section>
 
       <!-- ================= HONORS & AWARDS (criterion #1) ================= -->
@@ -218,34 +314,6 @@
             <strong>Best Technical Innovation</strong>, Amity University
             <span class="when">· 2017</span><br>
             <span class="selectivity">Selected out of 800 students.</span>
-          </li>
-        </ul>
-      </section>
-
-      <!-- ================= PROFESSIONAL SERVICE (criterion #4) ================= -->
-      <section id="service" aria-labelledby="service-title">
-        <h2 id="service-title" class="section-title">Professional Service</h2>
-        <p class="lead">Peer reviewer · 12 reviews across ICML, KDD &amp; COLM 2026 workshops.</p>
-        <ul class="grouped">
-          <li>
-            <span class="grp">ICML 2026</span>
-            <span class="grp-items">
-              <a href="https://agentwild-workshop.github.io/icml2026/">AIWILD</a> <span class="n">(3)</span> ·
-              <a href="https://ai4math2026.github.io/">AI4MATH</a> <span class="n">(3)</span> ·
-              <a href="https://dl4c.github.io/">DL4C</a> <span class="n">(2)</span>
-            </span>
-          </li>
-          <li>
-            <span class="grp">KDD 2026</span>
-            <span class="grp-items">
-              <a href="https://secure-and-trustworthy-llm.github.io/">SET-LLM</a> <span class="n">(2)</span>
-            </span>
-          </li>
-          <li>
-            <span class="grp">COLM 2026</span>
-            <span class="grp-items">
-              <a href="https://science-ai-2026.github.io/">Sci-FM</a> <span class="n">(2)</span>
-            </span>
           </li>
         </ul>
       </section>
@@ -333,6 +401,10 @@
       
     </footer>
   </div>
+
+  <!-- Progressive enhancement: scroll reveal, reading rail, count-up,
+       comparison sliders, cite/BibTeX, deep-link anchors. No dependencies. -->
+  <script defer src="assets/js/main.js"></script>
 
   <!-- Cloudflare Web Analytics (cookieless, privacy-friendly).
        Cloudflare dashboard → Web Analytics → Add a site. -->
